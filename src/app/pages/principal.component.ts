@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare function customInitFunctions();
 
 @Component({
   selector: 'app-principal',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
+  public linkTheme= document.querySelector('#theme');
+
   constructor() { }
 
   ngOnInit(): void {
+
+    customInitFunctions();
+
+    const url=localStorage.getItem('theme')
+    this.linkTheme.setAttribute('href', url);
   }
 
 }
